@@ -12,6 +12,6 @@ To play the game:
 * Beat the highscore 
 
 Demo:
-![Demo](https://github.com/cathalryan9/US-State-Game/demo.gif)
+![Demo](https://github.com/cathalryan9/US-State-Game/blob/master/demo.gif)
 
-The US json file used was take from [www.react-simple-maps.io](http://react-simple-maps.io) 
+The US json file used was take from [http://react-simple-maps.io](http://react-simple-maps.io) 
