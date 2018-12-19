@@ -1,10 +1,20 @@
 .App {
   text-align: center;
-
 }
 
 body{
   background-image:  url("http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=c9c1c9&density=5&opacity=69");
+}
+
+.TitleName{
+    text-align: center;
+    font-size: 30px;
+}
+
+.random-statename{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 15px;
 }
 
 .App-logo {
@@ -90,30 +100,36 @@ div{
 }
 
 
-
 .rsm-geography{
 
-                          fill: #333333;
-                          stroke: #607D8B;
-                          stroke-width: 0.75;
-                          outline: none;
-            }
+        fill: #333333;
+        stroke: #607D8B;
+        stroke-width: 0.75;
+        outline: none;
+}
 
-            .rsm-geography:hover {
-                          fill: #607D8B;
-                          stroke: #607D8B;
-                          stroke-width: 0.75;
-                          outline: none;
-                        }
+.rsm-geography:hover {
+        fill: #607D8B;
+        stroke: #607D8B;
+        stroke-width: 0.75;
+        outline: none;
+}
 
-                        rsm-geography:pressed: {
-                          fill: #FF5722;
-                          stroke: #607D8B;
-                          stroke-width: 0.75;
-                          outline: none;
-                        }
+rsm-geography:pressed: {
+        fill: #FF5722;
+        stroke: #607D8B;
+        stroke-width: 0.75;
+        outline: none;
+}
 
 .correctState{
+        fill: #008000;
+        stroke: #008000;
+        stroke-width: 0.75;
+        outline: none;
+
+}
+.correctState:hover{
         fill: #008000;
         stroke: #008000;
         stroke-width: 0.75;

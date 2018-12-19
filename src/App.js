@@ -44,17 +44,6 @@ class AlbersUSA extends Component {
     }
   }
 
-  showTooltip(stateName){
-  this.setState({displayTooltip: "true",
-                 stateName: stateName
-                 })
-  }
-    hideTooltip(){
-   this.setState({displayTooltip: "false",
-                  stateName: ''
-                  })
-    }
-
     handleStateClick(event, state){
     let currentScore = this.state.currentScore;
         if(this.state.randomState == state){
@@ -91,6 +80,8 @@ class AlbersUSA extends Component {
 
     return (
       <div style={wrapperStyles}>
+       <div className="TitleName">Guess The State!</div>
+       <div className="random-statename">Find - {this.statesNames[this.state.randomState]}</div>
         <ComposableMap
           projection="albersUsa"
           projectionConfig={{
@@ -118,19 +109,15 @@ class AlbersUSA extends Component {
                       onClick={(e) => this.handleStateClick(e, geography.properties.ID_1 -1)}
                     >
                        </Geography>
-
-
                   )
                 }
               )}
             </Geographies>
-                      <text x="575" y="500" className="heavy"></text>
           </ZoomableGroup>
         </ComposableMap>
         <div>
         <div className="highScore">High Score - {this.state.highScore}</div>
         <div className="currentScore">Current Score - {this.state.currentScore}</div>
-        <div>Random State - {this.statesNames[this.state.randomState]}</div>
        </div>
       </div>
     )
