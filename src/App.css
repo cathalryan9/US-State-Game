@@ -3,6 +3,10 @@
 
 }
 
+body{
+  background-image:  url("http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=c9c1c9&density=5&opacity=69");
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -114,5 +118,6 @@ div{
         stroke: #008000;
         stroke-width: 0.75;
         outline: none;
+
 }
 

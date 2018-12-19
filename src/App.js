@@ -104,7 +104,7 @@ class AlbersUSA extends Component {
           }}
           >
           <ZoomableGroup disablePanning>
-            <Geographies geography="/world.json" disableOptimization>
+            <Geographies geography="/us.json" disableOptimization>
               {(geographies, projection) =>
                 geographies.map((geography, i) => {
                   return (
