@@ -7,11 +7,10 @@ import {
   Geographies,
   Geography,
 } from "react-simple-maps"
-import { scaleLinear } from "d3-scale";
-import { csv } from "d3-fetch";
-import ReactTooltip from 'react-tooltip'
 
-import {SwitchDataButton} from "./SwitchDataButton.js";
+
+
+
 
 const wrapperStyles = {
   width: "100%",
@@ -64,11 +63,11 @@ class AlbersUSA extends Component {
         }
         var previousCorrectState = document.getElementById(`state-${this.state.previousRandomState}`);
         if(previousCorrectState != null){
-            previousCorrectState.classList.remove("correctState");
+            previousCorrectState.classList.remove("correct-state");
         }
 
         var correctState = document.getElementById(`state-${this.state.randomState}`);
-        correctState.classList.add("correctState");
+        correctState.classList.add("correct-state");
 
         //Select random state
         this.setState({randomState: Math.floor(Math.random()*(49-0+1)),
@@ -80,8 +79,8 @@ class AlbersUSA extends Component {
 
     return (
       <div style={wrapperStyles}>
-       <div className="TitleName">Guess The State!</div>
-       <div className="random-statename">Find - {this.statesNames[this.state.randomState]}</div>
+       <div className="title-name">Guess The State!</div>
+       <div className="random-state-name">Find - {this.statesNames[this.state.randomState]}</div>
         <ComposableMap
           projection="albersUsa"
           projectionConfig={{
@@ -116,8 +115,8 @@ class AlbersUSA extends Component {
           </ZoomableGroup>
         </ComposableMap>
         <div>
-        <div className="highScore">High Score - {this.state.highScore}</div>
-        <div className="currentScore">Current Score - {this.state.currentScore}</div>
+        <div className="high-Score">High Score - {this.state.highScore}</div>
+        <div className="current-Score">Current Score - {this.state.currentScore}</div>
        </div>
       </div>
     )

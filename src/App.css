@@ -6,12 +6,12 @@ body{
   background-image:  url("http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=c9c1c9&density=5&opacity=69");
 }
 
-.TitleName{
+.title-name{
     text-align: center;
     font-size: 30px;
 }
 
-.random-statename{
+.random-state-name{
     text-align: center;
     font-size: 20px;
     padding-top: 15px;
@@ -37,21 +37,6 @@ body{
   color: #61dafb;
 }
 
-button{
-background-color: #f4511e;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.7;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-}
-button:hover {opacity: 1}
 
 h1 {
 text-align: center;
@@ -62,27 +47,6 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-}
-
-.tooltip-bubble{
-position: relative;
-text-align: center;
-}
-.tooltip-bubble .tooltip-text{
-  width: 120px;
-      background-color: rgb(0,0,0,0.6);
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-
-      /* Position the tooltip text - see examples below! */
-      position: absolute;
-      z-index: 1;
-          width: 120px;
-          top: 100%;
-          left: 50%;
-          margin-left: -60px;
 }
 
 @keyframes App-logo-spin {
@@ -122,14 +86,14 @@ rsm-geography:pressed: {
         outline: none;
 }
 
-.correctState{
+.correct-state{
         fill: #008000;
         stroke: #008000;
         stroke-width: 0.75;
         outline: none;
 
 }
-.correctState:hover{
+.correct-state:hover{
         fill: #008000;
         stroke: #008000;
         stroke-width: 0.75;
