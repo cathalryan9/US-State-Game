@@ -14,4 +14,4 @@ To play the game:
 Demo:
 ![Demo](https://github.com/cathalryan9/US-State-Game/demo.gif)
 
-The US json file used was take from [www.react-simple-maps.io](http://react-simple-maps.io)
+The US json file used was take from [www.react-simple-maps.io](http://react-simple-maps.io) 
