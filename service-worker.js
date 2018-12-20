@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/US-State-Game/precache-manifest.0477e06217b798cf8256b3a1a5564333.js"
+  "/US-State-Game/precache-manifest.8f17decf1402aa628a52c425aa0e4363.js"
 );
 
 workbox.clientsClaim();
