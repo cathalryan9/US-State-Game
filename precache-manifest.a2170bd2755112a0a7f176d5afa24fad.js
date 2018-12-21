@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "272575831107310c6dbb",
+    "revision": "b45739ed1c351f1bd5e2",
     "url": "/US-State-Game/static/css/main.1c2a2739.chunk.css"
   },
   {
-    "revision": "272575831107310c6dbb",
-    "url": "/US-State-Game/static/js/main.27257583.chunk.js"
+    "revision": "b45739ed1c351f1bd5e2",
+    "url": "/US-State-Game/static/js/main.b45739ed.chunk.js"
   },
   {
     "revision": "6ae1e4af6881f6ae305d",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/US-State-Game/static/js/runtime~main.62c4daee.js"
   },
   {
-    "revision": "8cc8a3fcc4fea6fc8e6050ac41b91d53",
+    "revision": "df60a2bab4e44f1b4c6cd4c652db464d",
     "url": "/US-State-Game/index.html"
   }
 ];
