@@ -105,6 +105,7 @@ class AlbersUSA extends Component {
 
                                            return (<Markers>{Object.keys(cityNames).map((marker, i) => (<Marker
                                                                                                                                           key={i}
+
                                                                                                                                           marker={cityNames[i]}
                                                                                                                                           style={{
                                                                                                                                             default: { fill: "#FF5722" },
@@ -114,13 +115,14 @@ class AlbersUSA extends Component {
                                                                                                                                           onClick={(e) => this.handleStateClick(e, marker )}
                                                                                                                                           >
                                                                                                                                           <circle
+                                                                                                                                          id={`city-${i}`}
+
                                                                                                                                             cx={0}
                                                                                                                                             cy={0}
-                                                                                                                                            r={5}
+                                                                                                                                            r={7}
                                                                                                                                             style={{
-                                                                                                                                              stroke: "#FF5722",
-                                                                                                                                              strokeWidth: 3,
-                                                                                                                                              opacity: 0.9,
+
+                                                                                                                                              opacity: 1,
                                                                                                                                             }}
                                                                                                                                           />
                                                                                                                                           </Marker>
@@ -165,24 +167,32 @@ class AlbersUSA extends Component {
                  this.setState({currentScore: 0});
                  }
         }
-        var previousCorrectEntity = document.getElementById(`state-${previousEntity}`);
-        if(previousCorrectEntity != null){
-            previousCorrectEntity.classList.remove("correct");
-        }
+        var previousCorrectEntity;
+		var correctEntity;
 
-        var correctState = document.getElementById(`state-${randomEntity}`);
-        correctState.classList.add("correct");
+
 
         //Select random state
         if(gameMode == "Cities"){
               this.setState({randomCity: Math.floor(Math.random()*(12 + 1)),
               previousRandomCity: this.state.randomCity});
+              previousCorrectEntity = document.getElementById(`city-${previousEntity}`);
+              correctEntity = document.getElementById(`city-${randomEntity}`);
                         }
 
         else if (gameMode == "States"){
+        previousCorrectEntity = document.getElementById(`state-${previousEntity}`);
             this.setState({randomState: Math.floor(Math.random()*(49 + 1)),
                           previousRandomState: this.state.randomState});
+                          previousCorrectEntity = document.getElementById(`state-${previousEntity}`);
+                          correctEntity = document.getElementById(`state-${randomEntity}`);
                                     }
+
+                                            correctEntity.classList.add("correct");
+
+                                                    if(previousCorrectEntity != null){
+                                                        previousCorrectEntity.classList.remove("correct");
+                                                    }
         }
 
 
@@ -190,7 +200,24 @@ class AlbersUSA extends Component {
     handleCityClick(){}
 
     switchGameMode(gameMode){
-        this.setState({gameMode: gameMode })
+
+    //remove correct class from previous entity when the game mode is changed
+        var previousCorrectEntity;
+        if(this.state.gameMode == "Cities"){
+            var previousEntity = this.state.previousRandomCity;
+            previousCorrectEntity = document.getElementById(`city-${previousEntity}`);
+        }
+        else if(this.state.gameMode == "States"){
+            var previousEntity = this.state.previousRandomState;
+            previousCorrectEntity = document.getElementById(`state-${previousEntity}`);
+        }
+        if(previousCorrectEntity != null){
+            previousCorrectEntity.classList.remove("correct");
+        }
+        this.setState({gameMode: gameMode,
+                       highScore: 0,
+                       currentScore: 0,
+                       });
     }
 
 
