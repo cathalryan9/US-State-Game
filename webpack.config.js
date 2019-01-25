@@ -20,6 +20,9 @@ var config = {
   },
   devServer: {
       publicPath: "/dist",
+      historyApiFallback: {
+        index: 'public/index.html'
+      }
 
 
     },

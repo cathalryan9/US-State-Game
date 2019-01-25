@@ -27,21 +27,40 @@ const statesNames = {0:'Alabama',1:'Alaska',2:'Arizona',3:'Arkansas',4:'Californ
 
 const markerOffset = -10
 
+//const cityNames = {
+//          0: {markerOffset: markerOffset, name: "New York", coordinates: [-74.0059413, 40.7127837] },
+//          1: {markerOffset: markerOffset, name: "Philadelphia", coordinates: [-75.1652215, 39.9525839]},
+//          2: {markerOffset: markerOffset, name: "Los Angeles", coordinates: [-118.2436849, 34.0522342] },
+//          3: {markerOffset: markerOffset, name: "Chicago", coordinates: [-87.6297982, 41.8781136]},
+//          4: {markerOffset: markerOffset, name: "Houston", coordinates: [-95.3698028, 29.7604267] },
+//          5: {markerOffset: markerOffset, name: "Phoenix", coordinates: [-112.0740373, 33.4483771]},
+//          6: {markerOffset: markerOffset, name: "San Antonio", coordinates: [-98.4936282, 29.4241219] },
+//          7: {markerOffset: markerOffset, name: "San Diego", coordinates: [-117.1610838, 32.715738]},
+//          8: {markerOffset: markerOffset, name: "Dallas", coordinates: [-96.7969879, 32.7766642] },
+//          9: {markerOffset: markerOffset, name: "San Jose", coordinates: [-121.8863286, 37.3382082]},
+//          10: {markerOffset: markerOffset, name: "Austin", coordinates: [-97.7430608, 30.267153] },
+//          11: {markerOffset: markerOffset, name: "Indianapolis", coordinates: [-86.158068, 39.768403]},
+//          12: {markerOffset: markerOffset, name: "Jacksonville", coordinates: [-81.655651, 30.3321838] },
+//          13: {markerOffset: markerOffset, name: "San Francisco", coordinates: [-122.4194155, 37.7749295]}
+//         }
 const cityNames = {
           0: {markerOffset: markerOffset, name: "New York", coordinates: [-74.0059413, 40.7127837] },
           1: {markerOffset: markerOffset, name: "Philadelphia", coordinates: [-75.1652215, 39.9525839]},
           2: {markerOffset: markerOffset, name: "Los Angeles", coordinates: [-118.2436849, 34.0522342] },
           3: {markerOffset: markerOffset, name: "Chicago", coordinates: [-87.6297982, 41.8781136]},
-          4: {markerOffset: markerOffset, name: "Houston", coordinates: [-95.3698028, 29.7604267] },
+          4: {markerOffset: markerOffset, name: "Austin", coordinates: [-97.7430608, 30.267153] },
           5: {markerOffset: markerOffset, name: "Phoenix", coordinates: [-112.0740373, 33.4483771]},
-          6: {markerOffset: markerOffset, name: "San Antonio", coordinates: [-98.4936282, 29.4241219] },
+
+          6: {markerOffset: markerOffset, name: "Houston", coordinates: [-95.3698028, 29.7604267] },
           7: {markerOffset: markerOffset, name: "San Diego", coordinates: [-117.1610838, 32.715738]},
           8: {markerOffset: markerOffset, name: "Dallas", coordinates: [-96.7969879, 32.7766642] },
-          9: {markerOffset: markerOffset, name: "San Jose", coordinates: [-121.8863286, 37.3382082]},
-          10: {markerOffset: markerOffset, name: "Austin", coordinates: [-97.7430608, 30.267153] },
+          9: {markerOffset: markerOffset, name: "San Francisco", coordinates: [-122.4194155, 37.7749295]},
+
+          10: {markerOffset: markerOffset, name: "San Antonio", coordinates: [-98.4936282, 29.4241219] },
           11: {markerOffset: markerOffset, name: "Indianapolis", coordinates: [-86.158068, 39.768403]},
           12: {markerOffset: markerOffset, name: "Jacksonville", coordinates: [-81.655651, 30.3321838] },
-          13: {markerOffset: markerOffset, name: "San Francisco", coordinates: [-122.4194155, 37.7749295]}
+          13: {markerOffset: markerOffset, name: "San Jose", coordinates: [-121.8863286, 37.3382082]}
+
          }
 
 
@@ -69,19 +88,23 @@ class AlbersUSA extends Component {
   }
     renderMarkerText(marker){
 
+	console.log(marker)
+	if(marker == this.state.previousRandomCity){
 
     return <text
            textAnchor="middle"
-           y={marker.markerOffset}
+           y={cityNames[marker]['markerOffset']}
            style={{
            fontFamily: "Roboto, sans-serif",
-           fill: "#FF5722",
+           fill: "#008000",
+           zIndex: "1",
+           position: "fixed"
            }}
            >
-           {marker.name}
-           {console.log(marker.markerOffset)}
-           {console.log(marker.name)}
+           {cityNames[marker]['name']}
+
            </text>
+    }
     }
 
     renderMarker(){
@@ -103,12 +126,13 @@ class AlbersUSA extends Component {
                                                                                       console.log(cityNames)
                                                                                       console.log(Object.keys(cityNames))
 
+
                                            return (<Markers>{Object.keys(cityNames).map((marker, i) => (<Marker
                                                                                                                                           key={i}
 
                                                                                                                                           marker={cityNames[i]}
                                                                                                                                           style={{
-                                                                                                                                            default: { fill: "#FF5722" },
+                                                                                                                                            default: { fill: "#FF5722", position: "fixed"},
                                                                                                                                             hover: { fill: "#FFFFFF" },
                                                                                                                                             pressed: { fill: "#FF5722" },
                                                                                                                                           }}
@@ -121,10 +145,14 @@ class AlbersUSA extends Component {
                                                                                                                                             cy={0}
                                                                                                                                             r={7}
                                                                                                                                             style={{
+                                                                                                                                                position: "relative",
 
                                                                                                                                               opacity: 1,
                                                                                                                                             }}
                                                                                                                                           />
+
+                                                                                                                                          {this.renderMarkerText(marker)}
+
                                                                                                                                           </Marker>
 
 
