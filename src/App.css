@@ -82,7 +82,7 @@ circle.correct{
 }
 
 .menu{
-		position: relative;
+
 		padding: 0 px;
 		font-family: 'KoHo', sans-serif;
         font-size: 18px;
@@ -92,6 +92,8 @@ circle.correct{
         border-radius: 4px;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
         border-bottom: 3px solid #FF5722;
+        position: fixed;
+        left: 0;
 
 }
 
@@ -100,7 +102,7 @@ circle.correct{
 
 }
 .MuiInput-underline-12::before{
-
+	position: fixed;
 	display: none;
 }
 .MuiInput-underline-12::after{

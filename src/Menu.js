@@ -2,6 +2,9 @@ import React, { Component } from "react"
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import NativeSelect from '@material-ui/core/NativeSelect'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = {root: {background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'}}
 
 class Menu extends Component {
 
@@ -34,9 +37,9 @@ class Menu extends Component {
 	}
     render(){
 		const {listOpen, headerTitle, className, list, selectedItem} = this.state
-
+		const { classes } = this.props;
         return (<div >{<div>
-                                         <Select  className={className} onChange={(e)=>this.handleChange(e)} value={selectedItem} onClick={()=> this.toggleList()}>
+                                         <Select onChange={(e)=>this.handleChange(e)} value={selectedItem} onClick={()=> this.toggleList()}>
                                          {list.map((item)=> (<MenuItem style={{left: 0 }} value={item.name} key={item.id}>{item.name}</MenuItem>))}</Select>
                                          </div>}</div>
                )
@@ -46,4 +49,5 @@ class Menu extends Component {
 
 }
 
-export default Menu
+
+export default Menu;
