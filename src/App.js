@@ -10,10 +10,6 @@ import {
   Marker
 } from "react-simple-maps";
 
-const wrapperStyles = {
-
-};
-
 const statesNames = {
   0: "Alabama", 1: "Alaska", 2: "Arizona", 3: "Arkansas", 4: "California",
   5: "Colorado", 6: "Connecticut", 7: "Delaware", 8: "Florida",
@@ -282,15 +278,15 @@ class AlbersUSA extends Component {
 
 
     return (
-      <div style={wrapperStyles}>
       <div >
-        <Menu
-		  className="menu"
-          title="Guess The State!"
-          list={games}
-          switchGameMode={this.switchGameMode}
-        />
-        </div>
+	      <div >
+	        <Menu
+			  className="menu"
+	          title="Guess The State!"
+	          list={games}
+	          switchGameMode={this.switchGameMode}
+	        />
+	        </div>
 
         <div className="random-state-name">Find - {randomEntity}</div>
         <ComposableMap
@@ -332,7 +328,7 @@ class AlbersUSA extends Component {
             {showMarkers && this.renderMarker()}
           </ZoomableGroup>
         </ComposableMap>
-        <div>
+        <div className="scores-container">
           <div className="high-Score">High Score - {this.state.highScore}</div>
           <div className="current-Score">
             Current Score - {this.state.currentScore}
