@@ -1,10 +1,19 @@
 
 ## US state guessing game
 
+
+
+
 This app was developed using React.js. The map generated is built from a json file containing
 svg paths for each state.
 
+
+
 To play the game:
+* Go to [https://cathalryan9.github.io/US-State-Game](https://cathalryan9.github.io/US-State-Game)
+
+or
+
 * Clone the repo
 * In the console run "npm install"
 * run "npm run dev"
