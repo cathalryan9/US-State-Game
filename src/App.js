@@ -125,6 +125,8 @@ class AlbersUSA extends Component {
     this.renderMarker = this.renderMarker.bind(this);
     this.renderMarkerText = this.renderMarkerText.bind(this);
     this.switchGameMode = this.switchGameMode.bind(this);
+    this.updateScores = this.updateScores.bind(this);
+    this.handleCityClick = this.handleCityClick.bind(this);
     this.state = {
       highScore: 0,
       currentScore: 0,
@@ -136,7 +138,7 @@ class AlbersUSA extends Component {
     };
   }
   renderMarkerText(marker) {
-    if (marker == this.state.previousRandomCity) {
+    if (marker === this.state.previousRandomCity) {
       return (
         <text
           textAnchor="middle"
@@ -154,7 +156,7 @@ class AlbersUSA extends Component {
   }
 
   renderMarker() {
-    if (cityNames.length != 0 || cityNames != null) {
+    if (cityNames.length !== 0 || cityNames !== null) {
       return (
         <Markers>
           {Object.keys(cityNames).map((marker, i) => (
@@ -166,7 +168,7 @@ class AlbersUSA extends Component {
                 hover: { fill: "#FFFFFF", outline: "none" },
                 pressed: { fill: "#FF5722", outline: "none" }
               }}
-              onClick={e => this.handleStateClick(e, marker)}
+              onClick={e => this.handleCityClick(e, marker)}
             >
               <circle
                 id={`city-${i}`}
@@ -184,83 +186,123 @@ class AlbersUSA extends Component {
       );
     }
   }
-
-  handleStateClick(event, entity) {
-    const gameMode = this.state.gameMode;
-    var randomEntity;
-    var previousEntity;
-
-    if (gameMode == "Cities") {
-      randomEntity = this.state.randomCity;
-      previousEntity = this.state.previousRandomCity;
-    } else if (gameMode == "States") {
-      randomEntity = this.state.randomState;
-      previousEntity = this.state.previousRandomState;
-    }
-    let currentScore = this.state.currentScore;
-    if (randomEntity == entity) {
-      currentScore = currentScore + 1;
-      this.setState({ currentScore: currentScore });
-      if (currentScore > this.state.highScore) {
-        this.setState({ highScore: currentScore });
-      }
-    } else {
-      if (currentScore > this.state.highScore) {
-        this.setState({ highScore: currentScore, currentScore: 0 });
+  updateScores(correct){
+	var currentScore = this.state.currentScore;
+	var highScore = this.state.highScore;
+  if (correct) {
+        currentScore = currentScore + 1;
+        this.setState({ currentScore: currentScore });
+        if (currentScore > highScore) {
+          this.setState({ highScore: currentScore });
+        }
       } else {
-        this.setState({ currentScore: 0 });
-      }
+        if (currentScore > highScore) {
+          this.setState({ highScore: currentScore, currentScore: 0 });
+        } else {
+          this.setState({ currentScore: 0 });
+        }
+        }
+
+  }
+  handleCityClick(event, city){
+  var gameMode = this.state.gameMode;
+        if (gameMode === "Cities"){
+            var randomCity;
+            var previousCity;
+
+              randomCity = this.state.randomCity;
+              previousCity = this.state.previousRandomCity;
+
+            if (randomCity === city) {
+              this.updateScores(true);
+            } else {
+              this.updateScores(false);
+            }
+
+            var previousCorrectCity;
+                var correctCity;
+
+                      previousCorrectCity = document.getElementById(
+                        `city-${previousCity}`
+                      );
+                      this.setState({
+                        randomCity: Math.floor(Math.random() * (13 + 1)),
+                        previousRandomCity: this.state.randomCity
+                      });
+                      previousCorrectCity = document.getElementById(
+                        `city-${previousCity}`
+                      );
+                      correctCity = document.getElementById(`city-${randomCity}`);
+
+
+                    correctCity.classList.add("correct");
+
+                    if (previousCorrectCity !== null) {
+                      previousCorrectCity.classList.remove("correct");
+                    }
+
     }
-    var previousCorrectEntity;
-    var correctEntity;
+
+
+
+  }
+  handleStateClick(event, state) {
+    const gameMode = this.state.gameMode;
+    if (gameMode === "States") {
+    var randomState;
+    var previousState;
+
+
+      randomState = this.state.randomState;
+      previousState = this.state.previousRandomState;
+
+    if (randomState === state) {
+      this.updateScores(true);
+    } else {
+      this.updateScores(false);
+    }
+    var previousCorrectState;
+    var correctState;
 
     //Select random state
-    if (gameMode == "Cities") {
-      this.setState({
-        randomCity: Math.floor(Math.random() * (12 + 1)),
-        previousRandomCity: this.state.randomCity
-      });
-      previousCorrectEntity = document.getElementById(`city-${previousEntity}`);
-      correctEntity = document.getElementById(`city-${randomEntity}`);
-    } else if (gameMode == "States") {
-      previousCorrectEntity = document.getElementById(
-        `state-${previousEntity}`
+
+      previousCorrectState = document.getElementById(
+        `state-${previousState}`
       );
       this.setState({
         randomState: Math.floor(Math.random() * (49 + 1)),
         previousRandomState: this.state.randomState
       });
-      previousCorrectEntity = document.getElementById(
-        `state-${previousEntity}`
+      previousCorrectState = document.getElementById(
+        `state-${previousState}`
       );
-      correctEntity = document.getElementById(`state-${randomEntity}`);
+      correctState = document.getElementById(`state-${randomState}`);
+
+
+    correctState.classList.add("correct");
+
+    if (previousCorrectState !== null) {
+      previousCorrectState.classList.remove("correct");
     }
-
-    correctEntity.classList.add("correct");
-
-    if (previousCorrectEntity != null) {
-      previousCorrectEntity.classList.remove("correct");
     }
   }
-
-  handleCityClick() {}
 
   switchGameMode(gameMode) {
     //remove correct class from previous entity when the game mode is changed
     var previousCorrectEntity;
-    if (this.state.gameMode == "Cities") {
+    if (this.state.gameMode === "Cities") {
       var previousEntity = this.state.previousRandomCity;
       previousCorrectEntity = document.getElementById(`city-${previousEntity}`);
-    } else if (this.state.gameMode == "States") {
+    } else if (this.state.gameMode === "States") {
       var previousEntity = this.state.previousRandomState;
       previousCorrectEntity = document.getElementById(
         `state-${previousEntity}`
       );
     }
-    if (previousCorrectEntity != null) {
+    if (previousCorrectEntity !== null) {
       previousCorrectEntity.classList.remove("correct");
     }
-    this.setState({ gameMode: gameMode, highScore: 0, currentScore: 0 });
+    this.setState({ gameMode: gameMode, highScore: 0, currentScore: 0, previousRandomCity: -1, previousRandomState: -1 });
   }
 
   render() {
@@ -269,10 +311,10 @@ class AlbersUSA extends Component {
     var showMarkers = false;
     var randomEntity = "States";
 
-    if (gameMode == "Cities") {
+    if (gameMode === "Cities") {
       randomEntity = cityNames[this.state.randomCity]["name"];
       showMarkers = true;
-    } else if (gameMode == "States") {
+    } else if (gameMode === "States") {
       randomEntity = statesNames[this.state.randomState];
     }
 
@@ -305,7 +347,7 @@ class AlbersUSA extends Component {
         >
           <ZoomableGroup disablePanning>
             {/*<Geographies geography="/US-State-Game/us.json" disableOptimization>*/}
-            <Geographies geography="/public/us.json" disableOptimization>
+            <Geographies geography="/us.json" disableOptimization>
               {(geographies, projection) =>
                 geographies.map((geography, i) => {
                   return (

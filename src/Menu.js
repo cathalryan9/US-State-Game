@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
@@ -27,7 +26,7 @@ class Menu extends Component {
     this.props.switchGameMode(e.target.value);
   }
   render() {
-    const { headerTitle, className, list, selectedItem } = this.state;
+    const { list, selectedItem } = this.state;
     const { classes } = this.props;
     return (
       <div>
